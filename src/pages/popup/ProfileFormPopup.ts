@@ -2,7 +2,6 @@ import {By} from "selenium-webdriver";
 import {BasePage} from "../../base/BasePage";
 import {BaseElement} from "../../base/BaseElement";
 import {BaseConfig} from "../../configs/BaseConfig";
-import {ThreadUtils} from "../../../utils/ThreadUtils";
 
 export class ProfileFormPopup extends BasePage {
     private currentPassword = By.css("input[placeholder='Current password']")
