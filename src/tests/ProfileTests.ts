@@ -6,7 +6,7 @@ import {ProfilePage} from "../pages/ProfilePage";
 import {assert, expect} from "chai";
 import {WebDriver} from "selenium-webdriver";
 
-describe('Invalid email test', function (): void {
+describe('Profile test', function (): void {
     this.timeout(0);
 
     let beforeProfileDescription: any[];
@@ -32,7 +32,7 @@ describe('Invalid email test', function (): void {
         await mySslPage.logOut()
     });
 
-    it('should display an error for invalid email format ', async function () {
+    it('should display correct profile data ', async function () {
         const authPage: AuthPage = new AuthPage(driver)
         await authPage.getAuthTitle()
         await authPage.fillEmailAndPasswordFields()
