@@ -14,7 +14,6 @@ export class BaseElement {
 
         if (el instanceof WebElement) return el
         else throw new Error("Element not found")
-
     }
 
     public static async finds(driver: WebDriver, selector: By, time: number = 10000): Promise<WebElement[]> {

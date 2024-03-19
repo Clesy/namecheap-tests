@@ -20,7 +20,6 @@ export class ProfileFormPopup extends BasePage {
     public async fillEmailField(confirmPassword: string = new BaseConfig().getPassword()) {
         await BaseElement.sendKeys(this.driver, this.confirmPassword, confirmPassword)
         await BaseElement.click(this.driver, this.saveBtn)
-
     }
 
     public async clickSaveBtn() {
