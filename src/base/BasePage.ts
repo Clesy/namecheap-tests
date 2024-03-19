@@ -1,5 +1,4 @@
 import {WebDriver} from 'selenium-webdriver';
-import {BaseDriver} from './BaseDriver';
 import {BaseConfig} from "../configs/BaseConfig";
 
 export class BasePage {

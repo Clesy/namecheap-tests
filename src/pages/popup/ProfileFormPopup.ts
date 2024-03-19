@@ -4,10 +4,10 @@ import {BaseElement} from "../../base/BaseElement";
 import {BaseConfig} from "../../configs/BaseConfig";
 
 export class ProfileFormPopup extends BasePage {
-    private currentPassword = By.css("input[placeholder='Current password']")
-    private newPassword = By.css("input[placeholder='New password']")
-    private confirmPassword = By.css("input[placeholder='Confirm password']")
-    private saveBtn = By.xpath("//div[@class='edit-box']//button[@type='submit'][normalize-space()='Save']")
+    private currentPassword: By = By.css("input[placeholder='Current password']")
+    private newPassword: By = By.css("input[placeholder='New password']")
+    private confirmPassword: By = By.css("input[placeholder='Confirm password']")
+    private saveBtn: By = By.xpath("//div[@class='edit-box']//button[@type='submit'][normalize-space()='Save']")
 
     public async fillPasswordFields(oldPassword: string = new BaseConfig().getPassword(),
                                     newPassword: string = new BaseConfig().getPassword()

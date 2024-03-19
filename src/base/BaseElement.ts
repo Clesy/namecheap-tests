@@ -8,7 +8,7 @@ export class BaseElement {
     }
 
     public static async waitForElementVisible(driver: WebDriver, element: WebElement, timeout: number = 10000) {
-        const el = await driver.wait(async () => {
+        const el: boolean | WebElement = await driver.wait(async () => {
             return (await element.isEnabled()) ? element : false;
         }, timeout);
 

@@ -6,12 +6,12 @@ import {MySSLPage} from "../pages/MySSLPage";
 import {WebDriver} from "selenium-webdriver";
 
 describe('Welcome back test', function (): void {
-    this.timeout(0);
+    this.timeout(0)
 
-    let driver: WebDriver;
+    let driver: WebDriver
 
     before(async function () {
-        const webDriver = new BaseDriver();
+        const webDriver = new BaseDriver()
         driver = await webDriver.initDriver()
     });
 
@@ -45,12 +45,12 @@ describe('Welcome back test', function (): void {
 });
 
 describe('Invalid email test', function (): void {
-    this.timeout(0);
+    this.timeout(0)
 
-    let driver: WebDriver;
+    let driver: WebDriver
 
     before(async function () {
-        const webDriver = new BaseDriver();
+        const webDriver = new BaseDriver()
         driver = await webDriver.initDriver()
     });
     it('should display an error for invalid email format ', async function () {
@@ -81,12 +81,12 @@ describe('Invalid email test', function (): void {
 
 
 describe('Not registered user test', function (): void {
-    this.timeout(0);
+    this.timeout(0)
 
-    let driver: WebDriver;
+    let driver: WebDriver
 
     before(async function () {
-        const webDriver = new BaseDriver();
+        const webDriver = new BaseDriver()
         driver = await webDriver.initDriver()
     });
 

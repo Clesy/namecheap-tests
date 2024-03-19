@@ -3,7 +3,7 @@ import {HomePage} from "../pages/HomePage";
 import {AuthPage} from "../pages/AuthPage";
 import {MySSLPage} from "../pages/MySSLPage";
 import {ProfilePage} from "../pages/ProfilePage";
-import {assert} from "chai";
+import {assert, expect} from "chai";
 import {WebDriver} from "selenium-webdriver";
 
 describe('Invalid email test', function (): void {
@@ -13,7 +13,7 @@ describe('Invalid email test', function (): void {
     let driver: WebDriver;
 
     before(async function () {
-        const webDriver = new BaseDriver();
+        const webDriver: BaseDriver = new BaseDriver();
         driver = await webDriver.initDriver()
 
         const homePage: HomePage = new HomePage(driver)
@@ -33,7 +33,7 @@ describe('Invalid email test', function (): void {
     });
 
     it('should display an error for invalid email format ', async function () {
-        const authPage = new AuthPage(driver)
+        const authPage: AuthPage = new AuthPage(driver)
         await authPage.getAuthTitle()
         await authPage.fillEmailAndPasswordFields()
         const mySslPage: MySSLPage = await authPage.clickLoginBtn()
@@ -42,12 +42,9 @@ describe('Invalid email test', function (): void {
         const profilePage: ProfilePage = await mySslPage.goToProfile()
 
         assert.strictEqual(await profilePage.getProfileTitle(), "Profile")
-
         const afterProfileDescription: any[] = await profilePage.getProfileDescription()
 
-        assert.equal(beforeProfileDescription, afterProfileDescription)
-
-
+        expect(beforeProfileDescription).to.deep.equal(afterProfileDescription)
     });
     after(async function (): Promise<void> {
         await driver.quit()

@@ -15,16 +15,16 @@ export class MySSLPage extends BasePage {
 
     public async getProfileBtnText(email: string = new BaseConfig().getEmail()): Promise<string> {
         let profileToolbarBtn: string = `//span[normalize-space()="${email}"]`
-        return await BaseElement.getText(this.driver, By.xpath(profileToolbarBtn));
+        return await BaseElement.getText(this.driver, By.xpath(profileToolbarBtn))
     }
 
     public async clickProfileBtn(email: string = new BaseConfig().getEmail()) {
         let profileToolbarBtn: string = `//span[normalize-space()="${email}"]`
-        await BaseElement.click(this.driver, By.xpath(profileToolbarBtn));
+        await BaseElement.click(this.driver, By.xpath(profileToolbarBtn))
     }
 
     public async logOut() {
-        await BaseElement.click(this.driver, this.logoutBtn);
+        await BaseElement.click(this.driver, this.logoutBtn)
     }
 
     public async goToProfile() {

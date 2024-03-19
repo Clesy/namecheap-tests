@@ -1,4 +1,4 @@
-import {By, WebDriver} from "selenium-webdriver";
+import {By, Locator, WebDriver, WebElement} from "selenium-webdriver";
 import {BaseElement} from "../base/BaseElement";
 import {BasePage} from "../base/BasePage";
 import {ProfileFormPopup} from "./popup/ProfileFormPopup";
@@ -16,39 +16,39 @@ export class ProfilePage extends BasePage {
         super(driver);
     }
 
-
     public async getProfileDescription() {
-        const items = await BaseElement.finds(this.driver, this.profileItemsTerms);
-        let data: Array<any> = [];
+        const items: WebElement[] = await BaseElement.finds(this.driver, this.profileItemsTerms)
+        let data: Array<any> = []
 
         for (const item of items) {
-            let parentElement = await item.getText()
+            let parentElement: string = await item.getText()
 
             if (parentElement == "Newsletter") {
-                let item = await this.isToggleButtonEnabled()
+                let item: string = await this.isToggleButtonEnabled()
                 data.push(item)
             }
 
-            const descriptionData = await BaseElement
+            const descriptionData: WebElement = await BaseElement
                 .waitForElementVisible(this.driver, await item.findElement(this.profileItemsDescription))
 
-            let description = await descriptionData.getText()
+            let description: string = await descriptionData.getText()
+
             if (description)
-            data.push(await descriptionData.getText())
+                data.push(await descriptionData.getText())
         }
 
         return data
     }
 
     public async getProfileItems() {
-        const profileFormPopup: ProfileFormPopup = new ProfileFormPopup(this.driver);
-        const items = await BaseElement.finds(this.driver, this.profileItemsTerms);
+        const profileFormPopup: ProfileFormPopup = new ProfileFormPopup(this.driver)
+        const items: WebElement[] = await BaseElement.finds(this.driver, this.profileItemsTerms)
 
         for (const item of items) {
-            let parentElement = await item.getText()
+            let parentElement: string = await item.getText()
 
             if (parentElement != "Support pin" && parentElement != "Newsletter") {
-                const editProfile = await BaseElement
+                const editProfile: WebElement = await BaseElement
                     .waitForElementVisible(this.driver, await item.findElement(this.editProfileItem))
                 await editProfile.click()
 
@@ -74,15 +74,23 @@ export class ProfilePage extends BasePage {
     }
 
     public async clickSupportPinBtn() {
-        await BaseElement.click(this.driver, this.supportPinBtn)
+        const supportPinBtn = await this.elementIsVisible(this.supportPinBtn)
+        await supportPinBtn.click()
     }
 
     public async clickToggleBtn() {
-        await BaseElement.click(this.driver, this.toggleBtn)
+        const toggleBtn = await this.elementIsVisible(this.toggleBtn)
+        await toggleBtn.click()
+    }
+
+    private async elementIsVisible(element: By) {
+        return await BaseElement
+            .waitForElementVisible(this.driver,
+                await this.driver.findElement(element))
     }
 
     private async isToggleButtonEnabled() {
-        const el = await BaseElement.find(this.driver, this.toggleBtn)
+        const el: WebElement = await BaseElement.find(this.driver, this.toggleBtn)
         return await el.getAttribute("class")
     }
 }

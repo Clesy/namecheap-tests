@@ -1,17 +1,17 @@
 import {Builder, WebDriver} from 'selenium-webdriver';
 
 export class BaseDriver {
-    private driver: WebDriver | undefined = undefined;
+    private driver: WebDriver | undefined = undefined
 
     public async initDriver(): Promise<WebDriver> {
-        return new Builder().forBrowser('chrome').build();
+        return new Builder().forBrowser('chrome').build()
     }
 
     public getDriver(): WebDriver {
-        return <WebDriver>this.driver;
+        return <WebDriver>this.driver
     }
 
     public async quitDriver(driver: WebDriver): Promise<void> {
-        await driver.quit();
+        await driver.quit()
     }
 }

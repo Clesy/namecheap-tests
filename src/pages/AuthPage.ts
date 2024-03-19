@@ -6,14 +6,14 @@ import {MySSLPage} from "./MySSLPage";
 
 export class AuthPage extends BasePage {
     // Xpath Selectors
-    private authTitle: By = By.xpath("//h1[normalize-space()='Authorization']");
-    private loginBtn: By = By.xpath("//button[normalize-space()='Login']");
+    private authTitle: By = By.xpath("//h1[normalize-space()='Authorization']")
+    private loginBtn: By = By.xpath("//button[normalize-space()='Login']")
     private errorAnEmailText: By = By.xpath("//div[@class='left-tooltip-box']//span[@class='tooltip-text']")
 
     // Css Selectors
-    private emailField: By = By.css("input[placeholder='Email']");
-    private passwordField: By = By.css("input[placeholder='Enter password']");
-    private iconEyeBtn: By = By.css(".btn-input.btn-input-block");
+    private emailField: By = By.css("input[placeholder='Email']")
+    private passwordField: By = By.css("input[placeholder='Enter password']")
+    private iconEyeBtn: By = By.css(".btn-input.btn-input-block")
     private loginHeaderBtn: By = By.css("span[class='ssls-toolbar__btn-text']")
     private notifyText: By = By.css(".noty_text")
 
@@ -44,12 +44,12 @@ export class AuthPage extends BasePage {
     }
 
     public async clickLoginBtn() {
-        await BaseElement.click(this.driver, this.loginBtn);
-        return new MySSLPage(this.driver);
+        await BaseElement.click(this.driver, this.loginBtn)
+        return new MySSLPage(this.driver)
     }
 
     public async clickBtnEye() {
-        await BaseElement.click(this.driver, this.iconEyeBtn);
+        await BaseElement.click(this.driver, this.iconEyeBtn)
     }
 
     public async getLoginHeaderBtnText() {
@@ -57,13 +57,13 @@ export class AuthPage extends BasePage {
     }
 
     public async getAuthTitle() {
-        return await BaseElement.getText(this.driver, this.authTitle);
+        return await BaseElement.getText(this.driver, this.authTitle)
     }
 
     public async getPasswordType() {
         return await BaseElement.find(this.driver, this.passwordField).then(
             fun => fun.getAttribute("type")
-        );
+        )
     }
 
     public async getNotifyText() {
